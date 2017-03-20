@@ -7,12 +7,12 @@ build:init() {
   rm -rf $WORKDIR
     echo "build:init creating new work directory: $WORKDIR"
   mkdir -p $WORKDIR
-  cp required runlevel make-slim $WORKDIR
+  cp $BASEDIR/required $BASEDIR/runlevel $BASEDIR/make-slim $WORKDIR
 }
 
 build:mkDockerfile() {
   echo "build:mkDockerfile arch: $arch and $1"
-  sed -e "s;^FROM BASE_IMG;FROM ${BASE_IMG}:${arch}-${DIST};" "Dockerfile.template" > $WORKDIR/Dockerfile.$arch
+  sed -e "s;^FROM BASE_IMG;FROM ${BASE_IMG}:${arch}-${DIST};" "$BASEDIR/Dockerfile.template" > $WORKDIR/Dockerfile.$arch
 }
 
 build:mkPreImg() {
