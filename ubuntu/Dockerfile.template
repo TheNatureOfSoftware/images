@@ -1,0 +1,6 @@
+FROM BASE_IMG
+
+COPY make-slim /usr/local/bin/make-slim
+COPY runlevel /sbin/runlevel
+
+RUN make-slim
