@@ -7,6 +7,7 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - ./ubuntu/build.sh
+- ./tiller.build.sh
 # test image
 #- docker run -it thenatureofsoftware/traefik-arm64 version
 # push image
@@ -15,4 +16,5 @@ script:
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     docker push thenatureofsoftware/ubuntu-armhf:xenial
     docker push thenatureofsoftware/ubuntu-arm64:xenial
+    docker push thenatureofsoftware/tiller-arm64:v2.2.3
   fi

@@ -1,0 +1,11 @@
+FROM multiarch/alpine:aarch64-v3.5
+
+MAINTAINER https://github.com/larmog
+
+ENV HOME /tmp
+
+COPY . /
+
+EXPOSE 44134
+
+CMD ["/tiller"]
