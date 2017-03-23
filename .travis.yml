@@ -7,14 +7,14 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - ./ubuntu/build.sh
-- ./tiller/build.sh
 # test image
-#- docker run -it thenatureofsoftware/traefik-arm64 version
+- docker run --rm -it thenatureofsoftware/ubuntu-armhf:xenial true
+- docker run --rm -it thenatureofsoftware/ubuntu-arm64:xenial true
+
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     docker push thenatureofsoftware/ubuntu-armhf:xenial
     docker push thenatureofsoftware/ubuntu-arm64:xenial
-    docker push thenatureofsoftware/tiller-arm64:v2.2.3
   fi
