@@ -7,7 +7,7 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - ./ubuntu/build.sh
-- ./tiller.build.sh
+- ./tiller/build.sh
 # test image
 #- docker run -it thenatureofsoftware/traefik-arm64 version
 # push image
